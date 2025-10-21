@@ -1,4 +1,4 @@
-const datos = require("./practicas/15-datos-parcial-01.json")
+const datos = require("./15-datos-parcial-01.json")
 
 
 //1. Desarrolle una función que reciba un estudiante y retorne los nombres de los cursos del estudiante.
