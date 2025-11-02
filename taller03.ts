@@ -1,8 +1,8 @@
-// Punto 1
-function desglosarString(texto, tipo) {
+// Punto 1: Contar vocales o consonantes en un string
+export function desglosarString(texto: string, tipo: "vocales" | "consonantes"): number {
   const vocales = "aeiou";
   const letras = String(texto).toLowerCase();
-  let ans;
+  let ans: number;
 
   if (tipo === "vocales") {
     ans = [...letras].filter(char => /[a-z]/.test(char) && vocales.includes(char)).length;
@@ -15,27 +15,31 @@ function desglosarString(texto, tipo) {
   }
 }
 
-// Punto 2
-function twoSum(nums, target) {
-  const mapa = new Map();
+// Punto 2: Encontrar dos índices cuyo valor suma el target
+export function twoSum(nums: number[], target: number): [number, number] | null {
+  const mapa = new Map<number, number>();
 
   for (let i = 0; i < nums.length; i++) {
     const complemento = target - nums[i];
 
     if (mapa.has(complemento)) {
-      return [mapa.get(complemento), i];
+      return [mapa.get(complemento)!, i];
     }
 
     mapa.set(nums[i], i);
   }
 
-  return null; // sin solución
+  return null;
 }
 
-// Punto 3
-function conversionRomana(romano) {
+// Punto 3: Convertir número romano a decimal
+export function conversionRomana(romano: string): number {
   if (!romano) return 0;
-  const valores = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+
+  const valores: Record<string, number> = {
+    I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000,
+  };
+
   let total = 0;
   const s = String(romano).toUpperCase();
 
@@ -53,8 +57,8 @@ function conversionRomana(romano) {
   return total;
 }
 
-// Punto 4
-function descomposicion(cadena) {
+// Punto 4: Descomponer palabra objetivo en dos partes del diccionario
+export function descomposicion(cadena: string): [string, string] | null {
   if (!cadena) return null;
   const partes = cadena.split(",").map(p => p.trim());
   const palabraObjetivo = partes[0];
@@ -69,14 +73,4 @@ function descomposicion(cadena) {
   }
 
   return null;
-}
-
-//const resultado = desglosarString("hola", "vocales");
-//console.log(desglosarString("holaaaaa", "vocales"));
-
-module.exports = {
-  desglosarString,
-  twoSum,
-  conversionRomana,
-  descomposicion
 }
